@@ -1,0 +1,11 @@
+# STM32H7B0VBT board configuration
+
+# Copyright (c) Charles Dias <charlesdias.cd@outlook.com>
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_CUSTOM_STM32H7B0
+
+config BOARD
+	default "custom_stm32h7b0"
+
+endif # BOARD_CUSTOM_STM32H7B0
