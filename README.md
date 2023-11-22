@@ -84,7 +84,7 @@ pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 To build the application, run the following command:
 
 ```shell
-west build -b $BOARD app
+west build -b $BOARD samples/app
 ```
 
 where `$BOARD` is the target board.
@@ -95,7 +95,7 @@ Note that Zephyr sample boards may be used if an appropriate overlay is provided
 A sample debug configuration is also provided. To apply it, run the following command:
 
 ```shell
-west build -b $BOARD app -- -DOVERLAY_CONFIG=debug.conf
+west build -b $BOARD samples/app -- -DOVERLAY_CONFIG=debug.conf
 ```
 
 Once you have built the application, run the following command to flash it:
