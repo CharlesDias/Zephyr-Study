@@ -1,55 +1,82 @@
-# Zephyr Example Application
+# Zephyr RTOS Study
 
-This repository contains a Zephyr example application. The main purpose of this
-repository is to serve as a reference on how to structure Zephyr-based
-applications. Some of the features demonstrated in this example are:
+**Note:** This repository is based on the [zephyrproject-rtos/example-application](https://github.com/zephyrproject-rtos/example-application) template.
 
-- Basic [Zephyr application][app_dev] skeleton
-- [Zephyr workspace applications][workspace_app]
-- [Zephyr modules][modules]
-- [West T2 topology][west_t2]
-- [Custom boards][board_porting]
-- Custom [devicetree bindings][bindings]
-- Out-of-tree [drivers][drivers]
-- Out-of-tree libraries
-- Example CI configuration (using Github Actions)
-- Custom [west extension][west_ext]
+This repository contains some Zephyr example applications validated on the following boards:
 
-This repository is versioned together with the [Zephyr main tree][zephyr]. This
-means that every time that Zephyr is tagged, this repository is tagged as well
-with the same version number, and the [manifest](west.yml) entry for `zephyr`
-will point to the corresponding Zephyr tag. For example, the `example-application`
-v2.6.0 will point to Zephyr v2.6.0. Note that the `main` branch always
-points to the development branch of Zephyr, also `main`.
+- Nordic [nRF52840-DK][nrf52840_dk]
+- STMicroelectronics [NUCLEO-H743ZI][nucleo_h743zi]
+- STMicroelectronics [STM32H7B3I-DK][stm32h7b3i_dk]
+- FANKE FK7B0M1-VBT6 V1.0, named here as custom_stm32h7b0
 
-[app_dev]: https://docs.zephyrproject.org/latest/develop/application/index.html
-[workspace_app]: https://docs.zephyrproject.org/latest/develop/application/index.html#zephyr-workspace-app
-[modules]: https://docs.zephyrproject.org/latest/develop/modules.html
-[west_t2]: https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
-[board_porting]: https://docs.zephyrproject.org/latest/guides/porting/board_porting.html
-[bindings]: https://docs.zephyrproject.org/latest/guides/dts/bindings.html
-[drivers]: https://docs.zephyrproject.org/latest/reference/drivers/index.html
-[zephyr]: https://github.com/zephyrproject-rtos/zephyr
-[west_ext]: https://docs.zephyrproject.org/latest/develop/west/extensions.html
+[nrf52840_dk]: https://www.nordicsemi.com/Products/Development-hardware/nrf52840-dk
+[nucleo_h743zi]: https://www.st.com/en/evaluation-tools/nucleo-h743zi.html
+[stm32h7b3i_dk]: https://www.st.com/en/evaluation-tools/stm32h7b3i-dk.html
 
 ## Getting Started
 
-Before getting started, make sure you have a proper Zephyr development
-environment. Follow the official
-[Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html).
+### Setup the development environment
 
-### Initialization
+If you haven't set up the Zephyr development environment on your machine, go to the 
+official [Zephyr Getting Started Guide](https://docs.zephyrproject.org/latest/getting_started/index.html) 
+and follow the instructions. However, if you already have, you can create a new virtual environment dedicated 
+to this project. In this way, you can use different Zephyr versions for different projects.
 
-The first step is to initialize the workspace folder (``my-workspace``) where
-the ``example-application`` and all Zephyr modules will be cloned. Run the following
-command:
+The following steps initialize the workspace and clone all Zephyr modules. This needs to be done just one.
+
+1. Create a project folder
 
 ```shell
-# initialize my-workspace for the example-application (main branch)
-west init -m https://github.com/zephyrproject-rtos/example-application --mr main my-workspace
-# update Zephyr modules
-cd my-workspace
+mkdir STM32H7-Project
+```
+
+2. And create a new virtual environment
+
+```shell
+python3 -m venv STM32H7-Project/.venv
+```
+
+3. Activate the virtual environment
+
+```shell
+source STM32H7-Project/.venv/bin/activate
+```
+
+4. Install west
+
+```shell
+pip install west
+```
+
+5. Access the project folder
+
+```shell
+cd STM32H7-Project
+```
+
+6. And initialize the Workspace for the project example application.
+
+```shell
+west init -m https://github.com/CharlesDias/Zephyr-on-STM32H7 --mr main Workspace
+```
+
+7. Update the Zephyr modules
+
+```shell
 west update
+```
+
+8. Export a Zephyr CMake package. 
+
+
+```shell
+west zephyr-export
+```
+
+9. Install the Python dependencies.
+
+```shell
+pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 ```
 
 ### Building and running
@@ -62,12 +89,10 @@ west build -b $BOARD app
 
 where `$BOARD` is the target board.
 
-You can use the `custom_plank` board found in this
-repository. Note that Zephyr sample boards may be used if an
-appropriate overlay is provided (see `app/boards`).
+You can use the `custom_stm32h7b0` board found in this repository.
+Note that Zephyr sample boards may be used if an appropriate overlay is provided (see `app/boards`).
 
-A sample debug configuration is also provided. To apply it, run the following
-command:
+A sample debug configuration is also provided. To apply it, run the following command:
 
 ```shell
 west build -b $BOARD app -- -DOVERLAY_CONFIG=debug.conf
