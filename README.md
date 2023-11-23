@@ -1,3 +1,5 @@
+[![Build](https://github.com/CharlesDias/Zephyr-Study/actions/workflows/build.yml/badge.svg)](https://github.com/CharlesDias/Zephyr-Study/actions/workflows/build.yml)
+
 # Zephyr RTOS Study
 
 **Note:** This repository is based on the [zephyrproject-rtos/example-application](https://github.com/zephyrproject-rtos/example-application) template.
