@@ -114,3 +114,40 @@ To execute Twister integration tests, run the following command:
 ```shell
 west twister -T tests --integration
 ```
+
+## Kconfig interfaces
+
+Access the complete information on [Interactive Kconfig interfaces](https://docs.zephyrproject.org/latest/build/kconfig/menuconfig.html#interactive-kconfig-interfaces) Zephyr's webpage.
+
+There are two interactive configuration interfaces available for exploring the available Kconfig options and making temporary changes: `menuconfig` and `guiconfig`.
+
+### Run the configuration interfaces
+
+1. Build your application as usual using either `west`:
+
+```shell
+west build -b $BOARD samples/app
+```
+
+   .. zephyr-app-commands::
+      :tool: all
+      :cd-into:
+      :board: <board>
+      :goals: build
+      :compact:
+
+2. To run the terminal-based `menuconfig` interface, use this command:
+
+```shell
+west build -t menuconfig
+```
+
+3. To run the graphical `guiconfig`, use this command:
+
+```shell
+west build -t guiconfig
+```
+
+**ATTENTION:** 
+
+The configuration file used during the build is always `build/zephyr/.config`. If you have another saved configuration that you want to build with, copy it to `build/zephyr/.config`. Make sure to back up your original configuration file.
