@@ -24,22 +24,23 @@ to this project. In this way, you can use different Zephyr versions for differen
 
 The following steps initialize the workspace and clone all Zephyr modules. This needs to be done just one.
 
-1. Create a project folder
+1. Create a project folder and access it.
 
 ```shell
-mkdir STM32H7-Project
+mkdir Zephyr-Workspace
+cd Zephyr-Workspace
 ```
 
-2. And create a new virtual environment
+2. And create a new virtual environment inside `Zephyr-Workspace` folder.
 
 ```shell
-python3 -m venv STM32H7-Project/.venv
+python3 -m venv .venv
 ```
 
-3. Activate the virtual environment
+3. And activate the virtual environment.
 
 ```shell
-source STM32H7-Project/.venv/bin/activate
+source .venv/bin/activate
 ```
 
 4. Install west
@@ -48,26 +49,20 @@ source STM32H7-Project/.venv/bin/activate
 pip install west
 ```
 
-5. Access the project folder
-
-```shell
-cd STM32H7-Project
-```
-
-6. And initialize the Workspace for the project example application.
+5. And initialize the Workspace for the project example application.
 
 ```shell
 west init -m https://github.com/CharlesDias/Zephyr-on-STM32H7 --mr main Workspace
 ```
 
-7. Update the Zephyr modules
+6. Access the `Workspace` folder and clone the Zephyr modules
 
 ```shell
+cd Workspace
 west update
 ```
 
 8. Export a Zephyr CMake package. 
-
 
 ```shell
 west zephyr-export
@@ -79,7 +74,15 @@ west zephyr-export
 pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 ```
 
+**ATTENTION: Remember to activate the virtual environment every time that you initiate a new shell console.**
+
 ### Building and running
+
+Access the `Zephyr-Study` folder.
+
+```shell
+cd Zephyr-Study
+```
 
 To build the application, run the following command:
 
