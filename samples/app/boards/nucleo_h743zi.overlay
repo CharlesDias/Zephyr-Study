@@ -5,12 +5,12 @@
  */
 
 /* This devicetree overlay file will be automatically picked by the Zephyr
- * build system when building the sample for the custom_stm32h7b0 board.
+ * build system when building the sample for the nucleo_h743zi board.
  */
 / {
 	examplesensor0: examplesensor_0 {
 		compatible = "zephyr,examplesensor";
-		input-gpios = <&gpioc 13 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		input-gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
 	};
 };
 
