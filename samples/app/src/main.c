@@ -38,7 +38,7 @@ int main(void)
 			return 0;
 		}
 
-		printk("Sensor value: %d\n", val.val1);
+		printk("Sensor value: %d at %" PRIu32 "\n", val.val1, k_cycle_get_32());
 
 		k_sleep(K_MSEC(1000));
 	}
