@@ -1,3 +1,5 @@
+[![Language](https://img.shields.io/badge/Made%20with-C-blue.svg)](https://shields.io/)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build](https://github.com/CharlesDias/Zephyr-Study/actions/workflows/build.yml/badge.svg)](https://github.com/CharlesDias/Zephyr-Study/actions/workflows/build.yml)
 
 # Zephyr RTOS Study
@@ -76,7 +78,17 @@ west zephyr-export
 pip install -r ~/zephyrproject/zephyr/scripts/requirements.txt
 ```
 
+10. Install Robot Framework
+
+```shell
+pip install robotframework
+```
+
 **ATTENTION: Remember to activate the virtual environment every time that you initiate a new shell console.**
+
+```shell
+source .venv/bin/activate
+```
 
 ### Building and running
 
@@ -153,3 +165,95 @@ west build -t guiconfig
 **ATTENTION:** 
 
 The configuration file used during the build is always `build/zephyr/.config`. If you have another saved configuration that you want to build with, copy it to `build/zephyr/.config`. Make sure to back up your original configuration file.
+
+## Project Structure
+
+```text
+.
+├── boards
+│   └── arm
+│       ├── custom_plank
+│       │   ├── board.cmake
+│       │   ├── custom_plank_defconfig
+│       │   ├── custom_plank.dts
+│       │   ├── custom_plank-pinctrl.dtsi
+│       │   ├── custom_plank.yaml
+│       │   ├── Kconfig
+│       │   ├── Kconfig.board
+│       │   ├── Kconfig.defconfig
+│       │   └── README.md
+│       └── custom_stm32h7b0
+│           ├── board.cmake
+│           ├── custom_stm32h7b0_defconfig
+│           ├── custom_stm32h7b0.dts
+│           ├── custom_stm32h7b0.yaml
+│           ├── Kconfig.board
+│           ├── Kconfig.defconfig
+│           └── support
+│               └── openocd.cfg
+├── CMakeLists.txt
+├── docs
+│   └── boards
+│       ├── NUCLEO-H743ZI2
+│       │   └── en.MB1364-H743ZI-E01_Schematic.pdf
+│       └── STM32H7B3I-DK
+│           └── en.MB1332-H7B3I-C02_Schematic.pdf
+├── drivers
+│   ├── CMakeLists.txt
+│   ├── Kconfig
+│   └── sensor
+│       ├── CMakeLists.txt
+│       ├── examplesensor
+│       │   ├── CMakeLists.txt
+│       │   ├── examplesensor.c
+│       │   └── Kconfig
+│       └── Kconfig
+├── dts
+│   └── bindings
+│       └── sensor
+│           └── zephyr,examplesensor.yaml
+├── include
+│   └── custom_lib
+│       └── custom_lib.h
+├── Kconfig
+├── lib
+│   ├── CMakeLists.txt
+│   ├── custom_lib
+│   │   ├── CMakeLists.txt
+│   │   ├── custom_lib.c
+│   │   └── Kconfig
+│   └── Kconfig
+├── LICENSE
+├── README.md
+├── samples
+│   └── app
+│       ├── boards
+│       │   ├── custom_stm32h7b0.overlay
+│       │   ├── nucleo_f302r8.overlay
+│       │   └── nucleo_h743zi.overlay
+│       ├── CMakeLists.txt
+│       ├── debug.conf
+│       ├── Kconfig
+│       ├── prj.conf
+│       ├── sample.yaml
+│       ├── src
+│       │   └── main.c
+│       └── VERSION
+├── scripts
+│   ├── example_west_command.py
+│   └── west-commands.yml
+├── tests
+│   └── lib
+│       └── custom_lib
+│           ├── CMakeLists.txt
+│           ├── prj.conf
+│           ├── src
+│           │   └── main.c
+│           └── testcase.yaml
+├── test.txt
+├── west.yml
+└── zephyr
+    └── module.yml
+
+29 directories, 55 files
+```

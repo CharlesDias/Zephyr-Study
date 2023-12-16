@@ -20,6 +20,11 @@ jobs:
 
       - name: Initialize
         working-directory: example-application
+
+        # Initialize the west workspace. The '-l' option means to use the current directory as the manifest repository.
+        # Update the west workspace. The '-o=--depth=1' option is used to limit the history of the cloned repositories 
+        # to the last commit, which can save time and disk space. The '-n' option is used to only fetch the manifest-referenced
+        # repositories but not check them out.
         run: |
           west init -l .
           west update -o=--depth=1 -n
