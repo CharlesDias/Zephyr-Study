@@ -173,87 +173,62 @@ The configuration file used during the build is always `build/zephyr/.config`. I
 ├── boards
 │   └── arm
 │       ├── custom_plank
-│       │   ├── board.cmake
-│       │   ├── custom_plank_defconfig
-│       │   ├── custom_plank.dts
-│       │   ├── custom_plank-pinctrl.dtsi
-│       │   ├── custom_plank.yaml
-│       │   ├── Kconfig
-│       │   ├── Kconfig.board
-│       │   ├── Kconfig.defconfig
-│       │   └── README.md
 │       └── custom_stm32h7b0
-│           ├── board.cmake
-│           ├── custom_stm32h7b0_defconfig
-│           ├── custom_stm32h7b0.dts
-│           ├── custom_stm32h7b0.yaml
-│           ├── Kconfig.board
-│           ├── Kconfig.defconfig
-│           └── support
-│               └── openocd.cfg
-├── CMakeLists.txt
 ├── docs
 │   └── boards
 │       ├── NUCLEO-H743ZI2
-│       │   └── en.MB1364-H743ZI-E01_Schematic.pdf
 │       └── STM32H7B3I-DK
-│           └── en.MB1332-H7B3I-C02_Schematic.pdf
 ├── drivers
+│   ├── sensor
+│   │   ├── examplesensor
+│   │   ├── CMakeLists.txt
+│   │   └── Kconfig
 │   ├── CMakeLists.txt
-│   ├── Kconfig
-│   └── sensor
-│       ├── CMakeLists.txt
-│       ├── examplesensor
-│       │   ├── CMakeLists.txt
-│       │   ├── examplesensor.c
-│       │   └── Kconfig
-│       └── Kconfig
+│   └── Kconfig
 ├── dts
 │   └── bindings
 │       └── sensor
-│           └── zephyr,examplesensor.yaml
 ├── include
 │   └── custom_lib
 │       └── custom_lib.h
-├── Kconfig
 ├── lib
-│   ├── CMakeLists.txt
 │   ├── custom_lib
 │   │   ├── CMakeLists.txt
 │   │   ├── custom_lib.c
 │   │   └── Kconfig
+│   ├── CMakeLists.txt
 │   └── Kconfig
-├── LICENSE
-├── README.md
 ├── samples
-│   └── app
+│   ├── app
+│   │   ├── boards
+│   │   ├── src
+│   │   ├── CMakeLists.txt
+│   │   ├── debug.conf
+│   │   ├── Kconfig
+│   │   ├── prj.conf
+│   │   ├── sample.yaml
+│   │   └── VERSION
+│   └── lvgl
 │       ├── boards
-│       │   ├── custom_stm32h7b0.overlay
-│       │   ├── nucleo_f302r8.overlay
-│       │   └── nucleo_h743zi.overlay
-│       ├── CMakeLists.txt
-│       ├── debug.conf
-│       ├── Kconfig
-│       ├── prj.conf
-│       ├── sample.yaml
 │       ├── src
-│       │   └── main.c
-│       └── VERSION
+│       ├── CMakeLists.txt
+│       ├── prj.conf
+│       ├── README.rst
+│       └── sample.yaml
 ├── scripts
 │   ├── example_west_command.py
 │   └── west-commands.yml
 ├── tests
 │   └── lib
 │       └── custom_lib
-│           ├── CMakeLists.txt
-│           ├── prj.conf
-│           ├── src
-│           │   └── main.c
-│           └── testcase.yaml
-├── test.txt
-├── west.yml
-└── zephyr
-    └── module.yml
+├── zephyr
+│   └── module.yml
+├── CMakeLists.txt
+├── Kconfig
+├── LICENSE
+├── log.txt
+├── README.md
+└── west.yml
 
-29 directories, 55 files
+58 directories, 69 files
 ```
